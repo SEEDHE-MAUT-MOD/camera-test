@@ -41,9 +41,14 @@ ${blue} | | | |  / \  / ___| |/ /     / ___|  / \  |  \/  | ____|  _ \    / \
 ${blue} | |_| | / _ \| |   | ' /_____| |     / _ \ | |\/| |  _| | |_) |  / _ \  
 ${blue} |  _  |/ ___ \ |___| . \_____| |___ / ___ \| |  | | |___|  _ <  / ___ \ 
 ${blue} |_| |_/_/   \_\____|_|\_\     \____/_/   \_\_|  |_|_____|_| \_\/_/   \_\
-${green}                                               [By X PHANTOM (PH4N7OM)]
+${green}                                               [By - mp_trickz]
 "
-
+#telegram join command by seedhe maut
+open_telegram_channel() {
+    echo -e "\n${GREEN}[${WHITE}+${GREEN}] Opening Telegram Channel..."
+    # Replace the URL with your Telegram channel URL
+    xdg-open "https://t.me/seedhe_maut"  # Adjust based on your system or environment
+}
 # Package Installer
 pacin(){
     if $sudo && $pacman; then
